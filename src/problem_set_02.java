@@ -52,8 +52,6 @@ public class problem_set_02 {
     }
 
     private static boolean AtoY(char[][] t, int row, int col, char c) {
-        printTable(t);
-        System.out.println();
         // STEP 1: Write Base Case(s)
         if( c == 'y' )
             return true;
