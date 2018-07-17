@@ -52,11 +52,9 @@ public class problem_set_02 {
     }
 
     private static boolean AtoY(char[][] t, int row, int col, char c) {
-        // STEP 1: Write Base Case(s)
         if( c == 'y' )
             return true;
 
-        // STEP 2: Define directions: UP, DOWN, RIGHT, LEFT
         int[][] directions = {
                 {1, 0},
                 {0, 1},
@@ -64,34 +62,25 @@ public class problem_set_02 {
                 {0, -1}
         };
 
-        // STEP 3: Send 'cursor' on every direction
         for(int[] direction : directions){
-            // STEP 4: Make next cursor direction is within range
-            if(inRange(direction, row, col)){
-                int next_row = row + direction[0];
-                int next_col = col + direction[1];
-                char desired_char = (char)(c + 1);
-
-                // STEP 5: Look for follow-up character, if its what we are looking for...
-                if( t[next_row][next_row] == desired_char ){
-                    boolean got_it = AtoY(t, next_row, next_col, desired_char);
+            if( inRange(direction, row, col) ){
+                if(t[row + direction[0]][col + direction[1]] == (char)(c + 1)){
+                    boolean got_it = AtoY(t, row+direction[0], col+direction[1], (char)(c + 1));
 
                     if( got_it )
                         return true;
                     else
-                        AtoY(t, next_row, next_col, desired_char);
+                        AtoY(t, row + direction[0], col + direction[1], (char)(c + 1));
                 }
-                // STEP 6: If it is default character 'z'
-                else if( t[next_row][next_row] == 'z' ){
-                    // STEP 7: Replace 'z' character for next desired character
-                    t[next_row][next_col] = desired_char;
+                else if( t[row+direction[0]][col+direction[1]] == 'z' ){
+                    t[row + direction[0]][col + direction[1]] = (char)(c + 1);
 
-                    boolean got_it = AtoY(t, next_row, next_col, desired_char);
+                    boolean got_it = AtoY(t, row+direction[0], col+direction[1], (char)(c + 1));
 
                     if ( got_it )
                         return true;
                     else
-                        t[next_row][next_col] = 'z';
+                        t[row + direction[0]][col + direction[1]] = 'z';
                 }
             }
         }
