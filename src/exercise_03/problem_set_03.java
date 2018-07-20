@@ -1,3 +1,5 @@
+package exercise_03;
+
 /*  Author: Braulio Tonaco
  *  Date:   07/16/2018
  *

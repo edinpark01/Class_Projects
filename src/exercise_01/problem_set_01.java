@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package exercise_01;
 
 /*  Author: Braulio Tonaco
 *   Date:   07/16/2018
@@ -16,6 +16,8 @@ import java.util.Arrays;
 *                STEP 2: The output is True if one of the integers is the sum of two previous ones, and
 *                        False otherwise.
 * */
+import java.util.Arrays;
+
 public class problem_set_01 {
 
     public static void main(String[] args) {

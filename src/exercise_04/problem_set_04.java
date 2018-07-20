@@ -1,3 +1,5 @@
+package exercise_04;
+
 /*  Author: Braulio Tonaco
 *   Date:   07/18/2018
 *
@@ -28,14 +30,15 @@ import java.util.HashMap;
 
 public class problem_set_04 {
     public static void main(String[] args) {
-
-
+        //      ArrayList Approach Stats:
+        //      Time to read file: 0.141 seconds
+        //      Time to calculate max: 11.017 seconds
         array_approach();
 
-        System.out.println();
-
+        //      HashMap Approach Stats:
+        //      Time to read file: 0.075 seconds
+        //      Time to calculate max: 0.011 seconds
         hash_map_approach();
-
     }
 
     private static void hash_map_approach() {
