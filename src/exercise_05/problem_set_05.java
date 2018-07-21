@@ -1,10 +1,3 @@
-package exercise_05;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
-
 /*  Author:     Braulio Tonaco
  *  Date:       07/19/2018
  *
@@ -31,13 +24,28 @@ import java.util.Stack;
  *
  *  GOAL: 4 gallons of water in any one of the jugs
  *
+ *  [ 20, 0, 0 ]
+ *  [ 15, 5, 0 ]
+ *  [ 15, 2, 3 ]
+ *  [ 18, 2, 0 ]
+ *  [ 18, 0, 2 ]
+ *  [ 13, 5, 2 ]
+ *  [ 13, 4, 3 ] <-- Reached goal, which is 4 gallons in one of the jugs
  * */
+
+package exercise_05;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class problem_set_05 {
-    static ArrayList<State> visited = new ArrayList<>();   // Keeps track of new jugs movements permutations
+
+    private static ArrayList<State> visited = new ArrayList<>();   // Keeps track of new jugs movements permutations
 
     public static void main(String[] args) {
         Queue<State> queue = new LinkedList<>();
-
 
         int goal = 4;
 
@@ -53,7 +61,7 @@ public class problem_set_05 {
             State current = queue.poll();               // Dequeue - ( FIFO )
 
             if( current.reached(goal) ){                // Checks if current state has reached goal
-                Stack<State> stack = new Stack<State>();
+                Stack<State> stack = new Stack<>();
 
                 while ( current.pred != null ) {        // Stacks up to the Singly Linked List head
                     stack.add(current);
@@ -77,7 +85,7 @@ public class problem_set_05 {
 
                         if( !seen(next) ){
                             queue.add(next);            // Queue next State
-                            visited.add(next);          // Tags it as visited
+                            visited.add(next);          // Tag it as visited
                         }
                     }
                 }
@@ -85,7 +93,7 @@ public class problem_set_05 {
         }
     }
 
-    /** Checks wheater next State node has be visited **/
+    /** Checks weather next State node has be visited **/
     private static boolean seen(State n){
         for( State s : visited )
             if( s.contents[0] == n.contents[0] && s.contents[1] == n.contents[1] && s.contents[2] == n.contents[2] )
